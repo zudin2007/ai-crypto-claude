@@ -82,89 +82,108 @@ Launch exactly 5 agents using the Agent tool. All 5 MUST run in parallel — do 
 
 **CRITICAL: Copy-paste the discovery data into each agent prompt. Agents do NOT have access to your conversation context.**
 
+**SUBSTITUTION REQUIRED: The agent prompts below use <<PLACEHOLDER>> markers. You MUST replace every <<PLACEHOLDER>> with the actual value from Phase 1 before calling the Agent tool. Do NOT copy the angle-bracket markers literally. TOKEN_TICKER must be UPPERCASE (e.g. KAS, BTC, ETH — not "kas" or "bitcoin").**
+
+| Placeholder | Replace with |
+|-------------|-------------|
+| <<TOKEN_NAME>> | Proper-cased full name (e.g. Kaspa, Bitcoin, Ethereum) |
+| <<TOKEN_TICKER>> | Uppercase ticker (e.g. KAS, BTC, ETH) |
+| <<PRICE>> | Current USD price |
+| <<MCAP>> | Market capitalization |
+| <<FDV>> | Fully diluted valuation |
+| <<CHAIN>> | Blockchain / Layer (e.g. Kaspa L1, Bitcoin, Ethereum) |
+| <<CATEGORY>> | TOKEN_CATEGORY from Step 3 (e.g. Layer 1, DeFi, Meme) |
+| <<CIRCULATING_SUPPLY>> | Circulating supply with unit |
+| <<MAX_SUPPLY>> | Max supply or "Unlimited / Inflationary" |
+| <<CHANGE_24H>> | 24-hour price change % |
+| <<CHANGE_7D>> | 7-day price change % |
+| <<CHANGE_30D>> | 30-day price change % |
+| <<VOLUME_24H>> | 24-hour trading volume in USD |
+| <<COINGECKO_RANK>> | CoinGecko market cap rank number |
+
 #### Agent 1: On-Chain Analytics (crypto-onchain)
 
-```
-Use the Agent tool with this prompt:
+Use the Agent tool with this prompt (substitute all <<PLACEHOLDERS>> first):
 
-"You are the On-Chain Analytics agent for [TOKEN_NAME] ([TOKEN_TICKER]).
+```
+You are the On-Chain Analytics agent for <<TOKEN_NAME>> (<<TOKEN_TICKER>>).
 
 TOKEN PROFILE:
-- Price: [price] | Market Cap: [mcap] | FDV: [fdv]
-- Chain: [chain] | Category: [TOKEN_CATEGORY]
-- Circulating Supply: [circ] | Max Supply: [max]
+- Price: <<PRICE>> | Market Cap: <<MCAP>> | FDV: <<FDV>>
+- Chain: <<CHAIN>> | Category: <<CATEGORY>>
+- Circulating Supply: <<CIRCULATING_SUPPLY>> | Max Supply: <<MAX_SUPPLY>>
 
-Run the crypto-onchain skill: /crypto onchain [TOKEN_TICKER]
+Run the crypto-onchain skill: /crypto onchain <<TOKEN_TICKER>>
 
-Return your complete On-Chain Score (0-100) with all 5 sub-dimension scores and the full analysis."
+Return your complete On-Chain Score (0-100) with all 5 sub-dimension scores and the full analysis.
 ```
 
 #### Agent 2: Tokenomics Analysis (crypto-tokenomics)
 
-```
-Use the Agent tool with this prompt:
+Use the Agent tool with this prompt (substitute all <<PLACEHOLDERS>> first):
 
-"You are the Tokenomics Analysis agent for [TOKEN_NAME] ([TOKEN_TICKER]).
+```
+You are the Tokenomics Analysis agent for <<TOKEN_NAME>> (<<TOKEN_TICKER>>).
 
 TOKEN PROFILE:
-- Price: [price] | Market Cap: [mcap] | FDV: [fdv]
-- Chain: [chain] | Category: [TOKEN_CATEGORY]
-- Circulating Supply: [circ] | Max Supply: [max]
+- Price: <<PRICE>> | Market Cap: <<MCAP>> | FDV: <<FDV>>
+- Chain: <<CHAIN>> | Category: <<CATEGORY>>
+- Circulating Supply: <<CIRCULATING_SUPPLY>> | Max Supply: <<MAX_SUPPLY>>
 
-Run the crypto-tokenomics skill: /crypto tokenomics [TOKEN_TICKER]
+Run the crypto-tokenomics skill: /crypto tokenomics <<TOKEN_TICKER>>
 
-Return your complete Tokenomics Score (0-100) with all 5 sub-dimension scores and the full analysis."
+Return your complete Tokenomics Score (0-100) with all 5 sub-dimension scores and the full analysis.
 ```
 
 #### Agent 3: Sentiment Analysis (crypto-sentiment)
 
-```
-Use the Agent tool with this prompt:
+Use the Agent tool with this prompt (substitute all <<PLACEHOLDERS>> first):
 
-"You are the Sentiment Analysis agent for [TOKEN_NAME] ([TOKEN_TICKER]).
+```
+You are the Sentiment Analysis agent for <<TOKEN_NAME>> (<<TOKEN_TICKER>>).
 
 TOKEN PROFILE:
-- Price: [price] | Market Cap: [mcap] | FDV: [fdv]
-- Chain: [chain] | Category: [TOKEN_CATEGORY]
-- 24h Change: [24h%] | 7d Change: [7d%] | 30d Change: [30d%]
+- Price: <<PRICE>> | Market Cap: <<MCAP>> | FDV: <<FDV>>
+- Chain: <<CHAIN>> | Category: <<CATEGORY>>
+- 24h Change: <<CHANGE_24H>> | 7d Change: <<CHANGE_7D>> | 30d Change: <<CHANGE_30D>>
 
-Run the crypto-sentiment skill: /crypto sentiment [TOKEN_TICKER]
+Run the crypto-sentiment skill: /crypto sentiment <<TOKEN_TICKER>>
 
-Return your complete Sentiment Score (0-100) with all 5 sub-dimension scores and the full analysis."
+Return your complete Sentiment Score (0-100) with all 5 sub-dimension scores and the full analysis.
 ```
 
 #### Agent 4: Technical Analysis (crypto-technical)
 
-```
-Use the Agent tool with this prompt:
+Use the Agent tool with this prompt (substitute all <<PLACEHOLDERS>> first):
 
-"You are the Technical Analysis agent for [TOKEN_NAME] ([TOKEN_TICKER]).
+```
+You are the Technical Analysis agent for <<TOKEN_NAME>> (<<TOKEN_TICKER>>).
 
 TOKEN PROFILE:
-- Price: [price] | Market Cap: [mcap]
-- 24h Change: [24h%] | 7d Change: [7d%] | 30d Change: [30d%]
-- 24h Volume: [volume]
+- Price: <<PRICE>> | Market Cap: <<MCAP>>
+- 24h Change: <<CHANGE_24H>> | 7d Change: <<CHANGE_7D>> | 30d Change: <<CHANGE_30D>>
+- 24h Volume: <<VOLUME_24H>>
 
-Run the crypto-technical skill: /crypto technical [TOKEN_TICKER]
+Run the crypto-technical skill: /crypto technical <<TOKEN_TICKER>>
 
-Return your complete Technical Score (0-100) with all 5 sub-dimension scores, key support/resistance levels, and the full analysis."
+Return your complete Technical Score (0-100) with all 5 sub-dimension scores, key support/resistance levels, and the full analysis.
 ```
 
 #### Agent 5: Fundamental Analysis (crypto-fundamental)
 
-```
-Use the Agent tool with this prompt:
+Use the Agent tool with this prompt (substitute all <<PLACEHOLDERS>> first):
 
-"You are the Fundamental Analysis agent for [TOKEN_NAME] ([TOKEN_TICKER]).
+```
+You are the Fundamental Analysis agent for <<TOKEN_NAME>> (<<TOKEN_TICKER>>).
 
 TOKEN PROFILE:
-- Price: [price] | Market Cap: [mcap] | FDV: [fdv]
-- Chain: [chain] | Category: [TOKEN_CATEGORY]
-- CoinGecko Rank: [rank]
+- Price: <<PRICE>> | Market Cap: <<MCAP>> | FDV: <<FDV>>
+- Chain: <<CHAIN>> | Category: <<CATEGORY>>
+- CoinGecko Rank: <<COINGECKO_RANK>>
 
-Run the crypto-fundamental skill: /crypto fundamental [TOKEN_TICKER]
+Run the crypto-fundamental skill: /crypto fundamental <<TOKEN_TICKER>>
 
-Return your complete Fundamental Score (0-100) with all 5 sub-dimension scores and the full analysis."
+Return your complete Fundamental Score (0-100) with all 5 sub-dimension scores and the full analysis.
 ```
 
 ---
